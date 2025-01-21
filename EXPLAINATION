@@ -1,0 +1,103 @@
+
+
+
+# Longest Palindromic Substring Finder
+
+This script finds and prints the longest palindromic substring from a user-provided string. A palindromic substring is a sequence of characters within a string that reads the same backward as forward.
+
+## Code Breakdown and Explanation
+
+### Input and Initialization
+```python
+s = input("Enter the string for palindromic substring::")
+length = len(s)
+lst = []
+```
+- **Purpose**:
+  - Take input from the user (`s`), which is the string we will analyze.
+  - Calculate the length of the input string (`length`) to guide subsequent iterations.
+  - Initialize an empty list (`lst`) to store all identified palindromic substrings.
+
+---
+
+### Generating Substrings and Checking for Palindromes
+```python
+for n in range(1, length+1):
+    for i in range(length+1-n):
+        substring = s[i:i + n]
+        if substring == substring[::-1]:
+            lst.append(substring)
+```
+- **Outer Loop** (`for n in range(1, length+1)`):
+  - `n` represents the length of the substring being checked, starting from 1 up to the full length of the string.
+- **Inner Loop** (`for i in range(length+1-n)`):
+  - Determines the starting index (`i`) for substrings of length `n`.
+  - Ensures substrings don't exceed the bounds of the string.
+- **Substring Creation** (`s[i:i + n]`):
+  - Extracts a substring starting at index `i` with length `n`.
+- **Palindrome Check** (`if substring == substring[::-1]`):
+  - Compares the substring with its reversed version.
+  - If they match, the substring is palindromic and added to the list (`lst`).
+
+---
+
+### Finding the Longest Palindromic Substring
+```python
+palindro_str = max(lst, key=len) if lst else ""
+```
+- **Purpose**:
+  - Use the `max` function to find the substring with the maximum length from the list of palindromic substrings (`lst`).
+  - If `lst` is empty (no palindromic substrings found), assign an empty string to `palindro_str`.
+
+---
+
+### Output the Result
+```python
+print("palindromic longesgt is {} and length is {}".format(palindro_str, len(palindro_str)))
+```
+- **Output**:
+  - Prints the longest palindromic substring and its length in a readable format.
+- **Example**:
+  - Input: `babad`
+  - Output: `palindromic longest is bab and length is 3` (or `aba`, depending on substring order).
+
+---
+
+## Sample Execution
+
+### Example 1
+**Input**:
+```
+Enter the string for palindromic substring::babad
+```
+**Output**:
+```
+palindromic longest is bab and length is 3
+```
+
+### Example 2
+**Input**:
+```
+Enter the string for palindromic substring::racecar
+```
+**Output**:
+```
+palindromic longest is racecar and length is 7
+```
+
+---
+
+## Optimizations (Optional)
+This implementation has a time complexity of \(O(n^3)\), as it:
+1. Iterates through all possible substrings (\(O(n^2)\)).
+2. Checks if each substring is a palindrome (\(O(n)\)).
+
+For larger inputs, this approach may be inefficient. Advanced algorithms such as **Dynamic Programming** or the **Manacher's Algorithm** can solve the problem in \(O(n^2)\) or \(O(n)\), respectively.
+
+---
+
+## How to Use This Code
+1. Save the script as a `.py` file (e.g., `longest_palindrome.py`).
+2. Run the script in a Python environment.
+3. Enter a string when prompted.
+4. View the longest palindromic substring and its length.
