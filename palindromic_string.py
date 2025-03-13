@@ -13,5 +13,5 @@ for n in range(1,length+1):
             
 
 
-palindro_str = max(lst ,key =len ) if lst else ""
-print("palindromic longesgt is {} and length is {}".format(palindro_str, len(palindro_str)))    
+palindromic_string = max(lst ,key =len ) if lst else ""
+print("Palindromic Longest is {} and Length is {}".format(palindromic_string, len(palindromic_string)))    
